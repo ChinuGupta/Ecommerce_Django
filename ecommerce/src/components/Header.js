@@ -2,91 +2,150 @@ import React from "react";
 // import { Link } from "react-router-dom";
 import { LinkContainer } from "react-router-bootstrap";
 import { Navbar, Nav } from "react-bootstrap";
-
+import { useLocation } from "react-router-dom";
+import "./../x.css";
 function Header() {
+  const location = useLocation();
   return (
     <>
       <div>
         <Navbar
-          className="navbar navbar-expand-lg bg-black"
-          data-bs-theme="dark"
+          className="navbar navbar-expand-lg bg-light"
+          data-bs-theme="light"
         >
           <div className="container-fluid">
             <LinkContainer to="/">
-              <Nav.Link className="navbar-brand">Ecom</Nav.Link>
+              <Nav.Link className="navbar-brand mx-4">
+                <img src="./img2.png" alt="" style={{ width: "120px" }} />
+              </Nav.Link>
             </LinkContainer>
             <button
               className="navbar-toggler"
               type="button"
               data-bs-toggle="collapse"
-              data-bs-target="#navbarColor01"
-              aria-controls="navbarColor01"
+              data-bs-target="#navbarColor03"
+              aria-controls="navbarColor03"
               aria-expanded="false"
               aria-label="Toggle navigation"
             >
               <span className="navbar-toggler-icon"></span>
             </button>
-            <div className="collapse navbar-collapse mx-5" id="navbarColor01">
-              <ul className="navbar-nav me-auto ">
-                <li className="nav-item">
+            <div className="collapse navbar-collapse" id="navbarColor03">
+              <ul className="navbar-nav me-auto mx-3">
+                <li className="nav-item ">
                   <LinkContainer to="/">
-                    <Nav.Link className="nav-link active">Home</Nav.Link>
+                    <Nav.Link className="nav-link active fw-bold">
+                      Home
+                    </Nav.Link>
+                  </LinkContainer>
+                </li>
+                <li className="nav-item mx-2">
+                  <LinkContainer to="/about">
+                    <Nav.Link className="nav-link fw-bold">About</Nav.Link>
                   </LinkContainer>
                 </li>
               </ul>
-              <form className="d-flex ">
-                <input
-                  className="form-control me-sm-2"
-                  type="search"
-                  placeholder="Search"
-                />
-                <button
-                  className="btn btn-info my-2 my-sm-0 "
-                  type="submit"
-                  fdprocessedid="i0ad2l"
-                >
-                  Search
-                </button>
-              </form>
-              {/* {/* <li className="nav-item ">
-                  <a className="nav-link active" href="/">
-                    Cart{" "}
-                  </a>
-                </li> */}
+              <div className="Search">
+                <form className="d-flex border border-grey mx-3">
+                  <input
+                    className="form-control me-sm-2 border border-white search-button"
+                    type="search"
+                    placeholder="Search"
+                    style={{ borderRadius: "2px" }}
+                  />
+                  <button
+                    className="btn btn-white my-2 my-sm-0  border border-white"
+                    type="submit"
+                    fdprocessedid="enmdv9"
+                    style={{ borderRadius: "2px" }}
+                  >
+                    <i className="fa-solid fa-magnifying-glass"></i>
+                  </button>
+                </form>
+              </div>
+              <li className="nav-item dropdown list-unstyled mx-2 justify-content-center">
+                <LinkContainer to="/signup">
+                  <Nav.Link
+                    className="nav-link dropdown-toggle fw-bold"
+                    data-bs-toggle="dropdown"
+                    role="button"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                  >
+                    New User?
+                  </Nav.Link>
+                </LinkContainer>
+                <div className="dropdown-menu ">
+                  <LinkContainer to="/login">
+                    <Nav.Link className="dropdown-item custom-link">
+                      Login
+                    </Nav.Link>
+                  </LinkContainer>
 
-              <li className="nav-item dropdown mx-4 list-unstyled">
-                <a
-                  className="nav-link dropdown-toggle"
-                  data-bs-toggle="dropdown"
-                  href="/"
-                  role="button"
-                  aria-haspopup="true"
-                  aria-expanded="false"
-                >
-                  New User?
-                </a>
-                <div className="dropdown-menu">
-                  <a className="dropdown-item" href="/">
-                    Login
-                  </a>
-                  <a className="dropdown-item" href="/">
-                    Sign up
-                  </a>
+                  <LinkContainer to="/signup">
+                    <Nav.Link className="dropdown-item custom-link">
+                      Signup
+                    </Nav.Link>
+                  </LinkContainer>
+
                   <div className="dropdown-divider"></div>
-                  <a className="dropdown-item" href="/">
-                    Logout
-                  </a>
+                  <LinkContainer to="/logout">
+                    <Nav.Link className="dropdown-item custom-link ">
+                      Logout
+                    </Nav.Link>
+                  </LinkContainer>
                 </div>
               </li>
 
-              <li className="nav-item list-unstyled mx-5">
+              <li className="nav-item mx-4 list-unstyled">
                 <LinkContainer to="/cart">
-                    <Nav.Link className="nav-link active">Cart</Nav.Link>
-                  </LinkContainer>
+                  <Nav.Link className="nav-link">
+                    <img src="./bag.png" alt="" style={{ width: "30px" }} />
+                  </Nav.Link>
+                </LinkContainer>
               </li>
             </div>
           </div>
         </Navbar>
+        {location.pathname === "/" && (
+          <header>
+            <img
+              className="header-img"
+              src="https://team90degree.com/html/tf/bestshop-new-demo/bestshop-demo/img/slider/slide2.jpg"
+              alt=""
+            />
+            <div className="header-text">
+              {" "}
+              <h1
+                style={{
+                  position: "absolute",
+                  top:250,
+                  left: 120,
+                  zIndex: 1,
+                  fontSize: "2.7rem",
+                }}
+              >
+                <b style={{ color: "#00CB99" }}> Discover </b> Your New Favorite
+                Brands
+              </h1>
+              <button
+                style={{
+                  position: "absolute",
+                  top:350,
+                  left: 120,
+                  zIndex: 1,
+                  fontSize: "1.5rem",
+                  backgroundColor:" #00cb99 ",
+                  padding:"5px",
+                  border:"none",
+                  borderRadius:"4px",
+                }}
+              >
+                <h5>Go To Products</h5>
+              </button>
+            </div>
+          </header>
+        )}
       </div>
     </>
   );
